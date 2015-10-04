@@ -1,0 +1,57 @@
+{% extends 'blog_base.html' %}
+{% block  blog_content %}
+    <div class="blog-list-container-left-content">
+    {% if p.iter_pages() %}
+        <h2>tag:{{ tag }}</h2>
+        <hr>
+
+        {% for post in posts %}
+            <div class="post-preview">
+                <a href="/post/{{ post.id }}">
+                    <h2 class="post-title">{{ post.title }}</h2>
+                </a>
+                {% if post.tags %}
+                <ul class="list-unstyled list-inline">
+                {% for tag in post.tags %}
+                    <li><strong><span class="label label-info"><a href="{{ url_for('show_tag', tag_id=tag.id) }}
+                    ">{{ tag.name }}</a></span></strong></li>
+                {% endfor %}
+                </ul>
+          {% endif %}
+                <p class="post-meta">
+                    Posted by
+                    <a href="{{ url_for('.about') }}">Admin</a>
+                    on {{ post.create_time.strftime('%H:%M %d-%m-%Y') }}
+                </p>
+            </div>
+            <hr>
+        {% endfor %}
+    {% endif %}
+    </div>
+<!--pager-->
+<div class="pagination">
+
+        {% if p.has_prev %}
+            <li><a href="{{ url_for('index', page=p.prev_num) }}" aria-label="Previous"><span aria-hidden="true">上一页</span></a></li>
+        {% else %}
+            <li><a href="#">上一页</a></li>
+        {% endif %}
+
+        {% for i in pagination %}
+            {% if i == page %}
+                <li class="active"><a href="#">{{ i }}<span class="sr-only">(current)</span></a></li>
+            {% else %}
+                <li><a href="{{ url_for('index', page=i) }}"> {{ i }}</a></li>
+            {% endif %}
+        {% endfor %}
+
+        {% if p.has_next %}
+            <li><a href="{{ url_for('index', page=p.next_num) }}" aria-hidden="next"><span aria-hidden="true">下一页</span>
+        {% else %}
+            <li><a href="#">下一页</a></li>
+        {% endif %}
+       </a></li>
+
+</div>
+
+{% endblock %}

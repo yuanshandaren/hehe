@@ -1,0 +1,5 @@
+#encoding=utf-8
+SQLALCHEMY_DATABASE_URI='sqlite:///data.sqlite'
+SQLALCHEMY_CONMMIT_ON_TEARDOWN=True
+debug = False
+DEBUG_TB_INTERCEPT_REDIRECTS = False

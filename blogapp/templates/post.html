@@ -1,0 +1,28 @@
+{% extends 'blog_base.html' %}
+{% block blog_content %}
+    <div class="blog-list-container-left-content">
+
+        <h1>{{ post.title }}</h1>
+          {% if post.tags %}
+            <ul class="list-unstyled list-inline">
+                {% for tag in post.tags %}
+                    <li><strong><span class="label label-info"><a href="{{ url_for('show_tag', tag_id=tag.id) }}
+                    ">{{ tag.name }}</a></span></strong></li>
+                {% endfor %}
+            </ul>
+          {% endif %}
+        <p class="post-meta">Posted by <a href="{{ url_for('.about') }}">Admin</a> on {{ post.create_time.strftime('%H:%M %d-%m-%Y')}}</p>
+
+    <hr>
+    <div>
+        {{ post.content }}
+    </div>
+    </div>
+
+
+	<div class="ds-thread" data-thread-key="{{ post.id }}" data-title="{{ post.title }}" data-url="http://127.0.0.1:5000/post/{{ post.id }}"></div>
+
+
+
+
+{% endblock %}

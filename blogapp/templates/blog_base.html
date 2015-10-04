@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container blog-list-container">
+
+        <div class="row">
+            <div class="col-lg-8 blog-list-container-left">
+                <!-- blog entry -->
+                {% block blog_content %}
+                {% endblock %}
+            </div>
+            <div class="col-lg-4 blog-list-container-right">
+                <div class="well">
+                    <h3 class="text-primary">About me</h3>
+
+                    <h4 class="text-primary">yuanshan</h4>
+                    <p class="text-info">life is short,i use Python</p>
+                    <!-- /input-group -->
+                </div>
+                <!-- /well -->
+                <div class="well">
+                    <h3 class="text-primary">Tag</h3>
+                    <li><a href="{{ url_for('show_tag', tag_id=1) }}">python</a></li>
+                    <li><a href="{{ url_for('show_tag', tag_id=2) }}">feeling</a></li>
+                    <li><a href="{{ url_for('show_tag', tag_id=3) }}">happy</a></li>
+
+                </div>
+                <!-- /well -->
+                <div class="well">
+                    <h4 class="text-primary">Friend_line</h4>
+                    <li><a href="http://www.liaoxuefeng.com/">python learning</a></li>
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+{% endblock %}
