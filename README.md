@@ -7,7 +7,7 @@
             使用多说添加评论功能
 
 进入文章展示：
-          pyhton run.py
+          运行blog: $python run.py 
           进入 http://127.0.0.1:5000/
   
 进入blog后台：
